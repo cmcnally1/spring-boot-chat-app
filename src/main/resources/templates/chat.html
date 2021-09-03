@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Page</title>
+</head>
+<body>
+<form th:object="${newChatMessage}" th:action="@{/chat}" action="#" method="POST">
+    <label for="username">Username:</label>
+    <input th:field="*{usernameText}" id="username" type="text">
+    <label for="messageText">Message Text:</label>
+    <input th:field="*{messageText}" id="messageText" type="text">
+    <label for="messageType">Message Type: </label>
+    <select th:field="*{modeSelection}" id="messageType">
+        <option th:value="say" selected>Say</option>
+        <option th:value="shout">Shout</option>
+        <option th:value="whisper">Whisper</option>
+    </select>
+    <input type="submit">
+</form>
+
+<h1 th:each="msg : ${chatMessages}"
+    th:text="${msg.getSenderUsername() + ': ' + msg.getChatMessage()}"
+    th:unless="${msg.getChatMessage().contains('Shite')}"
+>Hello, Welcome to Chat Page!</h1>
+</body>
+</html>
