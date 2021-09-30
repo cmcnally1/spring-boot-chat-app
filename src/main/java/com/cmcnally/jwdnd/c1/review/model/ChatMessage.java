@@ -2,9 +2,11 @@ package com.cmcnally.jwdnd.c1.review.model;
 
 public class ChatMessage {
 
+    private int messageId;
     private String senderUsername;
     private String chatMessage;
     private String mode;
+
 
     public ChatMessage(String senderUsername, String chatMessage, String mode) {
         this.senderUsername = senderUsername;
