@@ -45,6 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Set the home page to be loaded on authentication success at login
         http.formLogin()
-                .defaultSuccessUrl("/home", true);
+                .defaultSuccessUrl("/chat", true);
     }
 }
