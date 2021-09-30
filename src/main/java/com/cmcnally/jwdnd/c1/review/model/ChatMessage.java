@@ -8,10 +8,25 @@ public class ChatMessage {
     private String mode;
 
 
+    /*
+        ChatMessage constructor
+     */
     public ChatMessage(String senderUsername, String chatMessage, String mode) {
+        //this.messageId = messageId;
         this.senderUsername = senderUsername;
         this.chatMessage = chatMessage;
         this.mode = mode;
+    }
+
+    /*
+        Getters and Setters
+     */
+    public int getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
     }
 
     public String getMode() {
