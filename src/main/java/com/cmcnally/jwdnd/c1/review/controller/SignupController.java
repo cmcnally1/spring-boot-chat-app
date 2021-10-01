@@ -4,10 +4,7 @@ import com.cmcnally.jwdnd.c1.review.model.User;
 import com.cmcnally.jwdnd.c1.review.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /*
     Login controller to get the signup view and handle user input when signing up
@@ -31,7 +28,7 @@ public class SignupController {
     }
 
     // Method to handle the PUT request from the user when signing up
-    @PutMapping
+    @PostMapping
     public String signupUser(@ModelAttribute User user, Model model) {
         // Variable to hold an error message to display
         String signupError = null;

@@ -2,8 +2,9 @@ package com.cmcnally.jwdnd.c1.review.controller;
 
 import com.cmcnally.jwdnd.c1.review.model.ChatForm;
 import com.cmcnally.jwdnd.c1.review.model.ChatMessage;
+import com.cmcnally.jwdnd.c1.review.service.AuthenticationService;
 import com.cmcnally.jwdnd.c1.review.service.MessageService;
-import org.springframework.security.core.Authentication;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,12 @@ public class ChatController {
 
     private MessageService messageService;
     // Authentication variable used to get information on the authenticated user
-    private Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    private AuthenticationService authenticationService;
 
     // Constructor
-    public ChatController(MessageService messageService) {
+    public ChatController(MessageService messageService, AuthenticationService authenticationService) {
         this.messageService = messageService;
+        this.authenticationService = authenticationService;
     }
 
     // GET method to get the chat page
@@ -35,7 +37,7 @@ public class ChatController {
     // POST method to handle a user posting a chat message
     @PostMapping
     public String postChatMessage(@ModelAttribute("newChatMessage") ChatForm chatForm, Model model){
-        messageService.addMessage(new ChatMessage(authentication.getName(), chatForm.getMessageText(), chatForm.getModeSelection()));
+        messageService.addMessage(new ChatMessage(authenticationService.getUsername(), chatForm.getMessageText(), chatForm.getModeSelection()));
         model.addAttribute("chatMessages", this.messageService.getChatMessages());
         chatForm.setMessageText("");
         chatForm.setUsernameText("");

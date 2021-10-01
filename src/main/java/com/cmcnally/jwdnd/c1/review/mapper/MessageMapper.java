@@ -15,6 +15,6 @@ public interface MessageMapper {
     List<ChatMessage> getChatMessage();
 
     @Insert("INSERT into MESSAGES (username, messagetext) VALUES(#{username}, #{messagetext})")
-    @Options(useGeneratedKeys = true, keyProperty = "messageId")
+    @Options(useGeneratedKeys = true, keyProperty = "messageid")
     int insert(ChatMessage message);
 }

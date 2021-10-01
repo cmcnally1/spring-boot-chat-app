@@ -4,9 +4,7 @@ import com.cmcnally.jwdnd.c1.review.mapper.MessageMapper;
 import com.cmcnally.jwdnd.c1.review.model.ChatMessage;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -20,10 +18,17 @@ public class MessageService {
 //        this.message = message;
 //    }
 
-    @PostConstruct
-    public void postContstruct(){
-        this.message = new String();
-        this.chatMessages = new ArrayList<>();
+//    @PostConstruct
+//    public void postContstruct(){
+//        this.message = new String();
+//        this.chatMessages = new ArrayList<>();
+//        this.messageMapper = messageMapper;
+//    }
+
+
+    public MessageService(String message, List<ChatMessage> chatMessages, MessageMapper messageMapper) {
+        this.message = message;
+        this.chatMessages = chatMessages;
         this.messageMapper = messageMapper;
     }
 
@@ -33,9 +38,9 @@ public class MessageService {
         String mode = message.getMode();
 
         if(mode.equals("shout")){
-            finalMessage.setChatMessage(message.getChatMessage().toUpperCase());
+            finalMessage.setMessagetext(message.getMessagetext().toUpperCase());
         } else if (mode.equals("whisper")) {
-            finalMessage.setChatMessage(message.getChatMessage().toLowerCase());
+            finalMessage.setMessagetext(message.getMessagetext().toLowerCase());
         }
 
         messageMapper.insert(finalMessage);

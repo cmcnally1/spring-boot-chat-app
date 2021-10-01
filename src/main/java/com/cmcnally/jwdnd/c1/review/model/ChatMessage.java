@@ -2,31 +2,31 @@ package com.cmcnally.jwdnd.c1.review.model;
 
 public class ChatMessage {
 
-    private int messageId;
-    private String senderUsername;
-    private String chatMessage;
+    private int messageid;
+    private String username;
+    private String messagetext;
     private String mode;
 
 
     /*
         ChatMessage constructor
      */
-    public ChatMessage(String senderUsername, String chatMessage, String mode) {
+    public ChatMessage(String username, String messagetext, String mode) {
         //this.messageId = messageId;
-        this.senderUsername = senderUsername;
-        this.chatMessage = chatMessage;
+        this.username = username;
+        this.messagetext = messagetext;
         this.mode = mode;
     }
 
     /*
         Getters and Setters
      */
-    public int getMessageId() {
-        return messageId;
+    public int getMessageid() {
+        return messageid;
     }
 
-    public void setMessageId(int messageId) {
-        this.messageId = messageId;
+    public void setMessageid(int messageid) {
+        this.messageid = messageid;
     }
 
     public String getMode() {
@@ -37,19 +37,19 @@ public class ChatMessage {
         this.mode = mode;
     }
 
-    public String getSenderUsername() {
-        return senderUsername;
+    public String getUsername() {
+        return username;
     }
 
-    public void setSenderUsername(String senderUsername) {
-        this.senderUsername = senderUsername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getChatMessage() {
-        return chatMessage;
+    public String getMessagetext() {
+        return messagetext;
     }
 
-    public void setChatMessage(String chatMessage) {
-        this.chatMessage = chatMessage;
+    public void setMessagetext(String messagetext) {
+        this.messagetext = messagetext;
     }
 }

@@ -34,7 +34,7 @@ public class UserService {
         String hashedPassword = hashService.getHashedValue(user.getPassword(), encodedSalt);
 
         // Insert the new user into the database via the mapper
-        return userMapper.insert(new User(null, user.getUsername(), encodedSalt, hashedPassword, user.getFirstName(), user.getLastName()));
+        return userMapper.insert(new User(null, user.getUsername(), encodedSalt, hashedPassword, user.getFirstname(), user.getLastname()));
     }
 
     // Method to retrieve the user from the database via the user mapper
