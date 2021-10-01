@@ -1,10 +1,12 @@
 package com.cmcnally.jwdnd.c1.review.service;
 
+import com.cmcnally.jwdnd.c1.review.mapper.MessageMapper;
 import com.cmcnally.jwdnd.c1.review.model.ChatMessage;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -12,6 +14,7 @@ public class MessageService {
 
     public String message;
     public List<ChatMessage> chatMessages;
+    private MessageMapper messageMapper;
 
 //    public MessageService(String message) {
 //        this.message = message;
@@ -21,6 +24,7 @@ public class MessageService {
     public void postContstruct(){
         this.message = new String();
         this.chatMessages = new ArrayList<>();
+        this.messageMapper = messageMapper;
     }
 
     public void addMessage(ChatMessage message) {
@@ -34,7 +38,7 @@ public class MessageService {
             finalMessage.setChatMessage(message.getChatMessage().toLowerCase());
         }
 
-        chatMessages.add(finalMessage);
+        messageMapper.insert(finalMessage);
     }
 
     public String upperCase(){
@@ -48,6 +52,6 @@ public class MessageService {
     }
 
     public List<ChatMessage> getChatMessages() {
-        return new ArrayList<>(this.chatMessages);
+        return new ArrayList<>(messageMapper.getChatMessage());
     }
 }

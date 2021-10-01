@@ -6,11 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface MessageMapper {
 
-    @Select("SELECT * FROM MESSAGES WHERE username = #{username}")
-    ChatMessage getChatMessage(String username);
+    @Select("SELECT * FROM MESSAGES")
+    List<ChatMessage> getChatMessage();
 
     @Insert("INSERT into MESSAGES (username, messagetext) VALUES(#{username}, #{messagetext})")
     @Options(useGeneratedKeys = true, keyProperty = "messageId")
