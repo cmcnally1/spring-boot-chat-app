@@ -18,8 +18,8 @@
 </form>
 
 <h1 th:each="msg : ${chatMessages}"
-    th:text="${msg.getSenderUsername() + ': ' + msg.getChatMessage()}"
-    th:unless="${msg.getChatMessage().contains('Shite')}"
+    th:text="${msg.getUsername() + ': ' + msg.getMessagetext()}"
+    th:unless="${msg.getMessagetext().contains('Shite')}"
 >Hello, Welcome to Chat Page!</h1>
 </body>
 </html>
