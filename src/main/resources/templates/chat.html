@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Chat Page</title>
@@ -15,6 +15,10 @@
         <option th:value="whisper">Whisper</option>
     </select>
     <input type="submit">
+</form>
+
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout">
 </form>
 
 <h1 th:each="msg : ${chatMessages}"
