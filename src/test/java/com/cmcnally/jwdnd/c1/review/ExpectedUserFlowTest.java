@@ -42,6 +42,7 @@ public class ExpectedUserFlowTest {
     private String testLastName = "McNally";
     private String testUsername = "cmcnally";
     private String testPassword = "CiArAnSpAsSwOrd";
+    private String testMessage = "Test Message";
 
     @BeforeAll
     public static void beforeAll() {
@@ -77,7 +78,7 @@ public class ExpectedUserFlowTest {
 
     @Test
     @Order(2)
-    public void testLogin() throws InterruptedException {
+    public void testLogin() {
         // Set up web driver and page object for test
         driver.get("http://localhost:" + port +"/login");
         loginPage = new LoginPage(driver);
@@ -91,6 +92,26 @@ public class ExpectedUserFlowTest {
 
         // Check that the chat page is loaded after successful login
         assertEquals("Chat Page", driver.getTitle());
+    }
+
+    @Test
+    @Order(3)
+    public void testChatMessage() {
+        // Set up web driver and page object for test
+        driver.get("http://localhost:" + port +"/chat");
+        chatPage = new ChatPage(driver);
+
+        // Fill in chat message field
+        chatPage.setMessageField(testMessage);
+
+        // Click the submit button
+        chatPage.clickSubmit();
+
+        // Check username displayed correctly
+        assertEquals(testUsername, chatPage.getDisplayedUsername());
+
+        // Check chat message displayed correctly
+        assertEquals(testMessage, chatPage.getDisplayedMessage());
     }
 
 }

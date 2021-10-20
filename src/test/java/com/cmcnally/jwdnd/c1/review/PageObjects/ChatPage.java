@@ -35,6 +35,10 @@ public class ChatPage {
         logoutButton.click();
     }
 
+    public void setMessageField(String message) {
+        messageField.sendKeys(message);
+    }
+
     /*
         TODO: Test the use of the below methods.
          The below messages may only work if one message is displayed.
@@ -44,7 +48,7 @@ public class ChatPage {
         //Create a String variable to hold the full text displayed
         String fullMessage = chatMessageDisplay.getText();
         //Return a substring starting from the delimiter and ending at the end of message
-        return fullMessage.substring(fullMessage.indexOf(": "), fullMessage.length()-1);
+        return fullMessage.substring(fullMessage.indexOf(": ")+2);
     }
 
     //Method to extract the username from the displayed username and message text
