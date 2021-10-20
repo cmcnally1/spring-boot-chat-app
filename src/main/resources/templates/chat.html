@@ -14,16 +14,17 @@
         <option th:value="shout">Shout</option>
         <option th:value="whisper">Whisper</option>
     </select>
-    <input type="submit">
+    <input type="submit" id="submit-button">
 </form>
 
 <form th:action="@{/logout}" method="POST">
-    <input type="submit" value="Logout">
+    <input type="submit" value="Logout" id="logout-button">
 </form>
 
 <h1 th:each="msg : ${chatMessages}"
     th:text="${msg.getUsername() + ': ' + msg.getMessagetext()}"
     th:unless="${msg.getMessagetext().contains('Shite')}"
+    id="chat-messages"
 >Hello, Welcome to Chat Page!</h1>
 </body>
 </html>
