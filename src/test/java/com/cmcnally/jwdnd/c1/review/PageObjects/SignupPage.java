@@ -29,4 +29,19 @@ public class SignupPage {
         submitButton.click();
     }
 
+    public void setFirstName(String firstName) {
+        firstNameField.sendKeys(firstName);
+    }
+
+    public void setLastName(String lastName) {
+        lastNameField.sendKeys(lastName);
+    }
+
+    public void setUsername(String username) {
+        usernameField.sendKeys(username);
+    }
+
+    public void setPassword(String password) {
+        passwordField.sendKeys(password);
+    }
 }
