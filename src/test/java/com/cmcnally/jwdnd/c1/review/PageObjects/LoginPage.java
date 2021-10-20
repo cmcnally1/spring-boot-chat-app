@@ -23,4 +23,12 @@ public class LoginPage {
     public void clickSubmit() {
         submitButton.click();
     }
+
+    public void setUsername(String username) {
+        usernameField.sendKeys(username);
+    }
+
+    public void setPassword(String password) {
+        passwordField.sendKeys(password);
+    }
 }

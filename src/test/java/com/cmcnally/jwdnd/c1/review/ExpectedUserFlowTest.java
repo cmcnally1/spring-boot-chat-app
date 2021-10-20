@@ -4,9 +4,7 @@ import com.cmcnally.jwdnd.c1.review.PageObjects.ChatPage;
 import com.cmcnally.jwdnd.c1.review.PageObjects.LoginPage;
 import com.cmcnally.jwdnd.c1.review.PageObjects.SignupPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,9 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         - Login using credentials
         - Submit a chat message
         - Check that username and chat message is displayed
+
+        NOTE: Tests must be run in order.
  */
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ExpectedUserFlowTest {
 
     @LocalServerPort
@@ -55,6 +56,7 @@ public class ExpectedUserFlowTest {
 
 
     @Test
+    @Order(1)
     public void testSignUp() {
         // Set up web driver and page object for test
         driver.get("http://localhost:" + port +"/signup");
@@ -73,6 +75,22 @@ public class ExpectedUserFlowTest {
         assertTrue(driver.findElement(By.id("success-msg")).isDisplayed());
     }
 
+    @Test
+    @Order(2)
+    public void testLogin() throws InterruptedException {
+        // Set up web driver and page object for test
+        driver.get("http://localhost:" + port +"/login");
+        loginPage = new LoginPage(driver);
 
+        // Fill in login page text fields
+        loginPage.setUsername(testUsername);
+        loginPage.setPassword(testPassword);
+
+        // Click login
+        loginPage.clickSubmit();
+
+        // Check that the chat page is loaded after successful login
+        assertEquals("Chat Page", driver.getTitle());
+    }
 
 }
