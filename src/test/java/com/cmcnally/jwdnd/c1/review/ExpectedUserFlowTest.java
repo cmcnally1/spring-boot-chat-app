@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -107,11 +109,15 @@ public class ExpectedUserFlowTest {
         // Click the submit button
         chatPage.clickSubmit();
 
+        // Gather the chat messages and usernames displayed as lists for verifying
+        List<String> messages = chatPage.getDisplayedMessages();
+        List<String> usernames = chatPage.getDisplayedUsernames();
+
         // Check username displayed correctly
-        assertEquals(testUsername, chatPage.getDisplayedUsername());
+        assertEquals(testUsername, usernames.get(0));
 
         // Check chat message displayed correctly
-        assertEquals(testMessage, chatPage.getDisplayedMessage());
+        assertEquals(testMessage, messages.get(0));
     }
 
 }
