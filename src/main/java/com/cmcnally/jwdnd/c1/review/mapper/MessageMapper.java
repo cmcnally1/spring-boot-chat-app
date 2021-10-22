@@ -11,9 +11,11 @@ import java.util.List;
 @Mapper
 public interface MessageMapper {
 
+    // Select all messages in the database
     @Select("SELECT * FROM MESSAGES")
     List<ChatMessage> getChatMessage();
 
+    // Insert a new message to the database
     @Insert("INSERT into MESSAGES (username, messagetext) VALUES(#{username}, #{messagetext})")
     @Options(useGeneratedKeys = true, keyProperty = "messageid")
     int insert(ChatMessage message);

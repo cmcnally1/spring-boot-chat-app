@@ -5,6 +5,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+/*
+	This application was created to review topics learned from an online course
+	on Spring and Spring boot
+
+	It is a simple chat application that allows users to:
+		- Sign up and create an account
+		- Log in using their credentials (Will block unknown credentials using Spring Security)
+		- Write a chat message on a chat page
+		- Log out of their account
+
+	The application supports multiple users by using MyBatis to interact with a SQL database
+ */
 @SpringBootApplication
 public class ReviewApplication {
 

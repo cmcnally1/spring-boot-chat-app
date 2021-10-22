@@ -42,10 +42,6 @@ public class ChatPage {
         messageField.sendKeys(message);
     }
 
-    /*
-        TODO: Test the use of the below methods.
-         The below messages may only work if one message is displayed.
-     */
     // Method to extract the messages from the displayed username and message text
     public List<String> getDisplayedMessages() {
 

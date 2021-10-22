@@ -14,6 +14,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
+    This test follows the expected user flow to sign up, login,
+    write a chat message and log out for two users.
+
+    The test verifies that after one user has added a chat message,
+    a second user can log in, add a message and still see the
+    first users
+ */
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TwoUserChatTest {

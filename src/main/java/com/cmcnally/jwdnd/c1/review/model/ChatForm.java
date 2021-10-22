@@ -1,5 +1,8 @@
 package com.cmcnally.jwdnd.c1.review.model;
 
+/*
+    Model for the chat form
+ */
 public class ChatForm {
 
     private String usernameText;

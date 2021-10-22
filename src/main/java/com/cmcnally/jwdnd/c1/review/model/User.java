@@ -1,5 +1,8 @@
 package com.cmcnally.jwdnd.c1.review.model;
 
+/*
+    Model for a user
+ */
 public class User {
 
     private Integer userid;

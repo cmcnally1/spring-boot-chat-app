@@ -1,5 +1,8 @@
 package com.cmcnally.jwdnd.c1.review.model;
 
+/*
+    Model for chat message
+ */
 public class ChatMessage {
 
     private int messageid;
